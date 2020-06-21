@@ -1,26 +1,56 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class Board extends React.Component {
+
+  constructor(props) {    
+    super(props);
+  }
+
+  _renderSquare(i) {
+    return <Square value={i} />
+  }
+
+  render() {
+
+    const status = "Next player: X"
+
+    return (
+      <div>
+        <div className="status"> { status } </div>
+        <div className="boardRow">
+          { this._renderSquare(0) }
+          { this._renderSquare(1) }
+          { this._renderSquare(2) }
+        </div>
+        <div className="boardRow">
+          { this._renderSquare(3) }
+          { this._renderSquare(4) }
+          { this._renderSquare(5) }
+        </div>
+        <div className="boardRow">
+          { this._renderSquare(6) }
+          { this._renderSquare(7) }
+          { this._renderSquare(8) }
+        </div>
+      </div>
+    )
+  }
+
 }
 
-export default App;
+class Square extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <button className="square">
+        {this.props.value}
+      </button>
+    )
+  }
+}
+
+export default Board
